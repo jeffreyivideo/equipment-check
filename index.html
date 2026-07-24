@@ -31,8 +31,8 @@
 </head>
 <body>
     <div class="iframe-container">
-        <!-- 先給一個空的 src，稍後用腳本動態填入 -->
-        <iframe id="gasIframe" src=""></iframe>
+        <!-- ⭐ 核心修改：加上 allow="geolocation" 讓內嵌的網頁可以請求 GPS 權限 -->
+        <iframe id="gasIframe" src="" allow="geolocation"></iframe>
     </div>
 
     <script>
