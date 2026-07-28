@@ -21,10 +21,12 @@
         }
         iframe {
             position: absolute;
-            top: -15px; /* 往上推移隱藏橫幅 */
+            /* ⭐ 核心修改 1：加大往上推移的距離，從 -15px 改為 -45px，把橫幅徹底藏到螢幕外 */
+            top: -45px; 
             left: 0;
             width: 100%;
-            height: calc(100% + 15px);
+            /* ⭐ 核心修改 2：配合推移距離，將高度補償從 +15px 改為 +45px，避免底部被切掉 */
+            height: calc(100% + 45px); 
             border: none;
         }
     </style>
@@ -39,7 +41,7 @@
         // 1. 請將下方引號內的網址，替換成您剛剛「最新部署」的 GAS 網址 (不要包含問號後面的東西)
         const gasBaseUrl = "https://script.google.com/macros/s/AKfycbyWJBGPdHPwJU1mimPoM8D9wNH-fReaUG1aJy5po2C8ZG3GnEGLtoGklFbPB6ieGqhe/exec";
         
-        // 2. 抓取目前 GitHub 網址後方的所有參數 (例如: ?equpid=GeneS125)
+        // 2. 抓取目前 GitHub 網址後方的所有參數 (例如: ?equipId=H06-2303-113A-05)
         const queryString = window.location.search;
         
         // 3. 把 GAS 網址跟參數組合起來，塞進 iframe 裡面執行
