@@ -38,14 +38,17 @@
     </div>
 
     <script>
-        // 1. 請將下方引號內的網址，替換成您剛剛「最新部署」的 GAS 網址 (不要包含問號後面的東西)
+        // 1. GAS 網址
         const gasBaseUrl = "https://script.google.com/macros/s/AKfycbyWJBGPdHPwJU1mimPoM8D9wNH-fReaUG1aJy5po2C8ZG3GnEGLtoGklFbPB6ieGqhe/exec";
         
         // 2. 抓取目前 GitHub 網址後方的所有參數 (例如: ?equipId=H06-2303-113A-05)
         const queryString = window.location.search;
         
-        // 3. 把 GAS 網址跟參數組合起來，塞進 iframe 裡面執行
-        document.getElementById("gasIframe").src = gasBaseUrl + queryString;
+        // 3. 組合網址，並【加上 frame=1 作為防護暗號】
+        let finalUrl = gasBaseUrl + queryString;
+        finalUrl += (queryString ? "&" : "?") + "frame=1";
+        
+        document.getElementById("gasIframe").src = finalUrl;
     </script>
 </body>
 </html>
